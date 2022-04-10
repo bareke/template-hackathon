@@ -10,6 +10,9 @@ export default {
   props: {
     msg: String,
   },
+  mounted() {
+    this.testAPI();
+  },
 
   methods: {
     testAPI() {

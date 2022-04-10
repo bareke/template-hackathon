@@ -1,3 +1,11 @@
-query HelloWorld ($name: String) {
-  hello (name: $name)
+query HelloWorld {
+  allExamples {
+    edges {
+      node {
+        id
+        name
+        lastname
+      }
+    }
+  }
 }
