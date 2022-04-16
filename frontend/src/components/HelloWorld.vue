@@ -5,6 +5,29 @@
     <vs-button type="filled" @click="testAPI">Vuexas test</vs-button>
     <span>Box icons funcionando</span>
     <box-icon name="music"></box-icon>
+
+    <vs-table>
+      <template #thead>
+        <vs-tr>
+          <vs-th>Code</vs-th>
+          <vs-th>Name</vs-th>
+          <vs-th>Lastname</vs-th>
+        </vs-tr>
+      </template>
+      <template #tbody>
+        <vs-tr :key="id" v-for="(item, id) in exampleData.edges" :data="item">
+          <vs-td>
+            {{ item.node.id }}
+          </vs-td>
+          <vs-td>
+            {{ item.node.lastname }}
+          </vs-td>
+          <vs-td>
+            {{ item.node.lastname }}
+          </vs-td>
+        </vs-tr>
+      </template>
+    </vs-table>
   </div>
 </template>
 
@@ -14,14 +37,21 @@ export default {
   props: {
     msg: String,
   },
-  mounted() {},
+  data() {
+    return {
+      exampleData: [],
+    };
+  },
+  mounted() {
+    this.testAPI();
+  },
 
   methods: {
     testAPI() {
       this.$apollo
         .query({ query: require("@/graphql/HelloWorld.gql") })
         .then((response) => {
-          console.log(response);
+          this.exampleData = response?.data?.allExamples;
         });
     },
   },
