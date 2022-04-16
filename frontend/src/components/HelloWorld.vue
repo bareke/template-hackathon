@@ -1,6 +1,10 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div
+    class="flex justify-center mt-56 bg-blue-200 w-1/2 h-32 rounded-xl p-8 justify-between text-3xl"
+  >
+    <vs-button type="filled" @click="testAPI">Vuexas test</vs-button>
+    <span>Box icons funcionando</span>
+    <box-icon name="music"></box-icon>
   </div>
 </template>
 
@@ -10,9 +14,7 @@ export default {
   props: {
     msg: String,
   },
-  mounted() {
-    this.testAPI();
-  },
+  mounted() {},
 
   methods: {
     testAPI() {
